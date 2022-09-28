@@ -6,20 +6,6 @@
 
 }
 
-.incWindow {
-    background: #00d9ff;
-    padding: 45px 0px;
-    margin-bottom: 25px;
-    border-radius: 10px;
-    color: #0d0d3b;
-    font-weight: bold;
-    font-size: 70px;
-}
-
-.red {
-    color: red;
-}
-
 .buttons {
     padding: 25px 0px;
     border: 3px solid #00d9ff;

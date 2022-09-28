@@ -1,0 +1,49 @@
+.setParametersWindow {
+    border: 3px solid #00d9ff;
+    width: 300px;
+    padding: 25px;
+    border-radius: 10px;
+    margin-right: 120px;
+}
+
+.wrapperValueParams {
+    box-sizing: border-box;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    border: 3px solid #00d9ff;
+    height: 183px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.valueParams {
+    color: #00d9ff;
+    font-weight: 900;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input {
+    border: 3px solid #00d9ff;
+    width: 100px;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.error {
+    border: 3px solid red;
+
+}
+
+.buttonWrapper {
+    padding: 25px 0px;
+    border: 3px solid #00d9ff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+

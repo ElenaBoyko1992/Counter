@@ -1,0 +1,14 @@
+.incWindow {
+    background: #0d0d3b;
+    padding: 45px 0px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    color: #00d9ff;
+    border: 3px solid #00d9ff;
+    font-weight: bold;
+    font-size: 70px;
+}
+
+.red {
+    color: red;
+}
