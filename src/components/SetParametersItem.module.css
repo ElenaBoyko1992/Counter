@@ -34,16 +34,8 @@
     text-align: center;
 }
 
-.error {
-    border: 3px solid red;
-}
-
-.errorText {
-    color: red;
-}
-
 .buttonWrapper {
-    padding: 25px 0px;
+    padding: 25px 0;
     border: 3px solid #00d9ff;
     border-radius: 10px;
     display: flex;

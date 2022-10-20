@@ -1,5 +1,5 @@
-import React, {useState} from "react"
-import s from './Counter.module.css'
+import React from "react"
+import s from './CounterItem.module.css'
 import {Button} from "./Button";
 import {ResultWindow} from "./ResultWindow";
 
@@ -12,11 +12,10 @@ type CounterPropsType = {
     startValue: number
 }
 
-export const Counter = (props: CounterPropsType) => {
+export const CounterItem = (props: CounterPropsType) => {
 
     return (
         <div className={s.counter}>
-            {/* <div className={props.increasedValue === props.maxValue ? `${s.incWindow} ${s.red}` : s.incWindow}>{props.increasedValue}</div>*/}
             <ResultWindow increasedValue={props.increasedValue} maxValue={props.maxValue}/>
             <div className={s.buttons}>
                 <Button onClickHandler={props.increaseValue}
