@@ -3,28 +3,37 @@ import s from './SetParametersWindow.module.css'
 import {Button} from "./Button";
 
 type SetParametersWindowType = {
-    valuesOnChangeHandler: (startValue: any, maxValue: any) => void
+    valuesOnChangeHandler: (startValue: number, maxValue: number) => void
 }
 
 export const SetParametersWindow = (props: SetParametersWindowType) => {
-    const [maxValue, setMaxValue] = useState('');
-    const [startValue, setStartValue] = useState('');
+/*    const [maxValue, setMaxValue] = useState('');
+    const [startValue, setStartValue] = useState('');*/
     const [maxValueFieldError, setMaxValueFieldError] = useState<boolean>(false)
     const [startValueFieldError, setStartValueFieldError] = useState<boolean>(false)
 
     const valuesOnChangeHandler = () => {
-        if (+startValue && +maxValue) {
+        if ((+startValue <= +maxValue) && (startValue !== '') && (maxValue !== '')) {
             props.valuesOnChangeHandler(+startValue, +maxValue)
+        } else if ((+startValue > +maxValue) && (startValue !== '') && (maxValue !== '')) {
+            alert('The initial value must be less than the maximum value. Please enter correct values.');
+            setStartValue('');
+            setMaxValue('');
+        } else if (!+maxValue || !+startValue) {
+            !+maxValue && setMaxValueFieldError(true);
+            !+startValue && setStartValueFieldError(true);
         } else {
-            setMaxValueFieldError(!+maxValue);
-            setStartValueFieldError(!+startValue);
+            setMaxValueFieldError(true);
+            setStartValueFieldError(true);
         }
     }
     const maxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setMaxValue(e.currentTarget.value)
+        maxValueFieldError && setMaxValueFieldError(false)
     }
     const startValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setStartValue(e.currentTarget.value)
+        setStartValue(e.currentTarget.value);
+        startValueFieldError && setStartValueFieldError(false)
     }
 
     return (
@@ -36,8 +45,8 @@ export const SetParametersWindow = (props: SetParametersWindowType) => {
                            onChange={maxValueHandler}
                            className={maxValueFieldError ? `${s.error} ${s.input}` : s.input}
                     />
-                    {maxValueFieldError ? 'Please, enter a number!' : ''}
                 </div>
+                {maxValueFieldError ? <span className={s.errorText}>Please, enter a correct value!</span> : ''}
                 <div className={s.valueParams}>
                     <span>start value:</span>
                     <input value={startValue}
@@ -45,6 +54,7 @@ export const SetParametersWindow = (props: SetParametersWindowType) => {
                            onChange={startValueHandler}
                     />
                 </div>
+                {startValueFieldError ? <span className={s.errorText}>Please, enter a correct value!</span> : ''}
             </div>
             <div className={s.buttonWrapper}>
                 <Button onClickHandler={valuesOnChangeHandler}>set</Button>
