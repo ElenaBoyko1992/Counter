@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import s from './SetParametersItem.module.css'
 import {Button} from "./Button";
 import {ValueSettingWindow} from "./ValueSettingWindow";
@@ -13,11 +13,10 @@ type SetParametersWindowType = {
 
 export const SetParametersItem = (props: SetParametersWindowType) => {
 
+
     const valuesOnChangeHandler = () => {
-        if ((props.startValue <= props.maxValue)) {
+        if ((props.startValue < props.maxValue)) {
             props.valuesOnChangeHandler()
-        } else if ((props.startValue > props.maxValue)) {
-            alert('The initial value must be less than the maximum value. Please enter correct values.');
         }
     }
 
@@ -26,6 +25,7 @@ export const SetParametersItem = (props: SetParametersWindowType) => {
             <ValueSettingWindow maxValue={props.maxValue} startValue={props.startValue}
                                 maxValueHandler={props.maxValueHandler}
                                 startValueHandler={props.startValueHandler}
+
             />
             <div className={s.buttonWrapper}>
                 <Button onClickHandler={valuesOnChangeHandler}>set</Button>

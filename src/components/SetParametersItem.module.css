@@ -3,7 +3,8 @@
     width: 300px;
     padding: 25px;
     border-radius: 10px;
-    margin-right: 120px;
+    margin: 0 45px;
+    width: 450px;
 }
 
 .wrapperValueParams {
@@ -12,7 +13,7 @@
     margin-bottom: 25px;
     border-radius: 10px;
     border: 3px solid #00d9ff;
-    height: 183px;
+    height: 190px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -24,7 +25,8 @@
     font-size: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
+    position: relative;
 }
 
 .input {
@@ -42,3 +44,14 @@
     justify-content: center;
 }
 
+.errorMessage {
+    color: red;
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+    font-size: 15px;
+}
+
+.error {
+    border-color: red;
+}

@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {CounterItem} from "./components/CounterItem";
 import {SetParametersItem} from "./components/SetParametersItem";
+import {Counter1} from "./Counter1";
+import {Counter2} from "./Counter2";
 
 function App() {
     const [startValue, setStartValue] = useState<number>(0)
@@ -69,17 +71,29 @@ function App() {
 
     return (
         <div className="App">
-            <SetParametersItem valuesOnChangeHandler={valuesOnChangeHandler} maxValue={maxValue}
-                               startValue={startValue}
-                               maxValueHandler={maxValueHandler}
-                               startValueHandler={startValueHandler}/>
-            <CounterItem increasedValue={increasedValue} increaseValue={increaseValue} resetValue={resetValue}
-                         maxValue={maxValue} startValue={startValue}
+            <Counter1 valuesOnChangeHandler={valuesOnChangeHandler}
+                      maxValue={maxValue}
+                      startValue={startValue}
+                      maxValueHandler={maxValueHandler}
+                      startValueHandler={startValueHandler}
+                      increasedValue={increasedValue}
+                      increaseValue={increaseValue}
+                      resetValue={resetValue}
             />
+
+{/*                        <Counter2 valuesOnChangeHandler={valuesOnChangeHandler}
+                      maxValue={maxValue}
+                      startValue={startValue}
+                      maxValueHandler={maxValueHandler}
+                      startValueHandler={startValueHandler}
+                      increasedValue={increasedValue}
+                      increaseValue={increaseValue}
+                      resetValue={resetValue}
+            />*/}
         </div>
     );
 }
 
 export default App;
 
-//test comment
+
