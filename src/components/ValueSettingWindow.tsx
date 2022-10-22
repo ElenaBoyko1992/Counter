@@ -7,6 +7,7 @@ type ValueSettingWindowType = {
     maxValueHandler: (value: string) => void
     startValueHandler: (value: string) => void
 }
+const ERROR_MESSAGE = 'Enter a correct value!'
 
 export const ValueSettingWindow = (props: ValueSettingWindowType) => {
     const [maxValueError, setMaxValueError] = useState(false);
@@ -45,7 +46,7 @@ export const ValueSettingWindow = (props: ValueSettingWindowType) => {
                            onChange={ChangeMaxValue}
                            className={maxValueError ? `${s.input} ${s.error}` : s.input}
                     />
-                    {maxValueError && <span className={s.errorMessage}>Enter a correct value!</span>}
+                    {maxValueError && <span className={s.errorMessage}>{ERROR_MESSAGE}</span>}
                 </div>
                 <div className={s.valueParams}>
                     <span>start value:</span>
@@ -54,7 +55,7 @@ export const ValueSettingWindow = (props: ValueSettingWindowType) => {
                            className={startValueError ? `${s.input} ${s.error}` : s.input}
                            onChange={ChangeStartValue}
                     />
-                    {startValueError && <span className={s.errorMessage}>Enter a correct value!</span>}
+                    {startValueError && <span className={s.errorMessage}>{ERROR_MESSAGE}</span>}
                 </div>
             </div>
         </>

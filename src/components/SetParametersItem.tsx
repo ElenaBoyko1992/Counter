@@ -15,7 +15,7 @@ export const SetParametersItem = (props: SetParametersWindowType) => {
 
 
     const valuesOnChangeHandler = () => {
-        if ((props.startValue < props.maxValue)) {
+        if ((props.startValue < props.maxValue) && (props.startValue >= 0)) {
             props.valuesOnChangeHandler()
         }
     }

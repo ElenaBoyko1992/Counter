@@ -81,7 +81,7 @@ function App() {
                       resetValue={resetValue}
             />
 
-{/*                        <Counter2 valuesOnChangeHandler={valuesOnChangeHandler}
+{/*            <Counter2 valuesOnChangeHandler={valuesOnChangeHandler}
                       maxValue={maxValue}
                       startValue={startValue}
                       maxValueHandler={maxValueHandler}

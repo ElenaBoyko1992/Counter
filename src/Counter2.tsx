@@ -15,15 +15,15 @@ type Counter1Type = {
 }
 
 export const Counter2 = (props: Counter1Type) => {
-    const [paramWindowIsOpen, setParamWindowIsOpen] = useState(false)
+    const [counterWindowIsOpen, setCounterWindowIsOpen] = useState(false)
     const valuesOnChangeHandler = () => {
         props.valuesOnChangeHandler()
-        setParamWindowIsOpen(!paramWindowIsOpen)
+        setCounterWindowIsOpen(!counterWindowIsOpen)
     }
 
     return (
         <>
-            {paramWindowIsOpen ?
+            {counterWindowIsOpen ?
                 <Counter2Item increasedValue={props.increasedValue} increaseValue={props.increaseValue}
                               resetValue={props.resetValue}
                               maxValue={props.maxValue} startValue={props.startValue}

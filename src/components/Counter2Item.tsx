@@ -17,10 +17,7 @@ export const Counter2Item = (props: CounterPropsType) => {
     const valuesOnChangeHandler = () => {
         if ((props.startValue < props.maxValue)) {
             props.valuesOnChangeHandler()
-        } /*else {
-            /!*alert('The initial value must be less than the maximum value. Please enter correct values.');*!/
-            setError(true)
-        }*/
+        }
     }
     return (
         <div className={s.counter}>
