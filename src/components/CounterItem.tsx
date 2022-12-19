@@ -21,7 +21,7 @@ export const CounterItem = (props: CounterPropsType) => {
                 <Button onClickHandler={props.increaseValue}
                         disabled={props.increasedValue === props.maxValue}>inc</Button>
                 <Button onClickHandler={props.resetValue}
-                        disabled={props.increasedValue === props.startValue}>reset</Button>
+                        disabled={props.increasedValue === props.startValue || props.maxValue <= props.startValue}>reset</Button>
             </div>
         </div>
     );

@@ -14,24 +14,23 @@ export const ValueSettingWindow = (props: ValueSettingWindowType) => {
     const [startValueError, setStartValueError] = useState(false);
 
     useEffect(() => {
-        if (props.maxValue < 0 || props.maxValue <= props.startValue) {
+        if (props.maxValue < 0 || props.maxValue < props.startValue) {
             setMaxValueError(true)
         } else {
             setMaxValueError(false)
         }
-    }, [props.maxValue])
-    useEffect(() => {
-        if (props.startValue < 0) {
-            setStartValueError(true)
-        } else {
-            setStartValueError(false)
-        }
-    }, [props.startValue])
+    }, [props.maxValue, props.startValue])
+    // useEffect(() => {
+    //     if (props.startValue < 0) {
+    //         setStartValueError(true)
+    //     } else {
+    //         setStartValueError(false)
+    //     }
+    // }, [props.startValue, props.maxValue])
 
 
     const ChangeMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
         props.maxValueHandler(e.currentTarget.value)
-        console.log(props.maxValue)
     }
     const ChangeStartValue = (e: ChangeEvent<HTMLInputElement>) => {
         props.startValueHandler(e.currentTarget.value);
