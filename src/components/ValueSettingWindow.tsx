@@ -9,7 +9,8 @@ type ValueSettingWindowType = {
 }
 const ERROR_MESSAGE = 'Enter a correct value!'
 
-export const ValueSettingWindow = (props: ValueSettingWindowType) => {
+export const ValueSettingWindow = React.memo((props: ValueSettingWindowType) => {
+    console.log("ValueSettingWindow")
     const [maxValueError, setMaxValueError] = useState(false);
     const [startValueError, setStartValueError] = useState(false);
 
@@ -20,13 +21,13 @@ export const ValueSettingWindow = (props: ValueSettingWindowType) => {
             setMaxValueError(false)
         }
     }, [props.maxValue, props.startValue])
-    // useEffect(() => {
-    //     if (props.startValue < 0) {
-    //         setStartValueError(true)
-    //     } else {
-    //         setStartValueError(false)
-    //     }
-    // }, [props.startValue, props.maxValue])
+    useEffect(() => {
+        if (props.startValue < 0) {
+            setStartValueError(true)
+        } else {
+            setStartValueError(false)
+        }
+    }, [props.startValue, props.maxValue])
 
 
     const ChangeMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -59,4 +60,4 @@ export const ValueSettingWindow = (props: ValueSettingWindowType) => {
             </div>
         </>
     )
-}
+})

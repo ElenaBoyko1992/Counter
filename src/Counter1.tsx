@@ -1,5 +1,5 @@
 import {SetParametersItem} from "./components/SetParametersItem";
-import React from "react";
+import React, {memo} from "react";
 import {CounterItem} from "./components/CounterItem";
 
 type Counter1Type = {
@@ -13,16 +13,18 @@ type Counter1Type = {
     resetValue: () => void
 }
 
-export const Counter1 = (props: Counter1Type) => {
+export const Counter1 = React.memo((props: Counter1Type) => {
+    console.log("Counter1")
     return (
         <>
             <SetParametersItem valuesOnChangeHandler={props.valuesOnChangeHandler} maxValue={props.maxValue}
                                startValue={props.startValue}
                                maxValueHandler={props.maxValueHandler}
                                startValueHandler={props.startValueHandler}/>
-            <CounterItem increasedValue={props.increasedValue} increaseValue={props.increaseValue} resetValue={props.resetValue}
+            <CounterItem increasedValue={props.increasedValue} increaseValue={props.increaseValue}
+                         resetValue={props.resetValue}
                          maxValue={props.maxValue} startValue={props.startValue}/>
         </>
     )
-}
+})
 

@@ -12,8 +12,8 @@ type CounterPropsType = {
     startValue: number
 }
 
-export const CounterItem = (props: CounterPropsType) => {
-
+export const CounterItem = React.memo((props: CounterPropsType) => {
+    console.log("CounterItem")
     return (
         <div className={s.counter}>
             <ResultWindow increasedValue={props.increasedValue} maxValue={props.maxValue}/>
@@ -25,4 +25,4 @@ export const CounterItem = (props: CounterPropsType) => {
             </div>
         </div>
     );
-}
+})

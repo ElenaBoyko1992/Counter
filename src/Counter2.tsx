@@ -1,5 +1,5 @@
 import {SetParametersItem} from "./components/SetParametersItem";
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 import {CounterItem} from "./components/CounterItem";
 import {Counter2Item} from "./components/Counter2Item";
 
@@ -14,12 +14,14 @@ type Counter1Type = {
     resetValue: () => void
 }
 
-export const Counter2 = (props: Counter1Type) => {
+export const Counter2 = React.memo((props: Counter1Type) => {
+    console.log("Counter2")
     const [counterWindowIsOpen, setCounterWindowIsOpen] = useState(false)
-    const valuesOnChangeHandler = () => {
+
+    const valuesOnChangeHandler = useCallback(() => {
         props.valuesOnChangeHandler()
         setCounterWindowIsOpen(!counterWindowIsOpen)
-    }
+    }, [props.valuesOnChangeHandler, setCounterWindowIsOpen, counterWindowIsOpen])
 
     return (
         <>
@@ -35,5 +37,5 @@ export const Counter2 = (props: Counter1Type) => {
                                    startValueHandler={props.startValueHandler}/>}
         </>
     )
-}
+})
 

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import './App.css';
 import {CounterItem} from "./components/CounterItem";
 import {SetParametersItem} from "./components/SetParametersItem";
@@ -16,28 +16,39 @@ function AppWithRedux() {
 
     const dispatch = useDispatch();
 
-    const valuesOnChangeHandler = () => {
+    const valuesOnChangeHandler = useCallback(() => {
         dispatch(setIncreasedValueAC(startValue))
-    }
+    }, [dispatch, startValue])
 
-    const maxValueHandler = (value: string) => {
+    const maxValueHandler = useCallback((value: string) => {
         Number.isInteger(+value) && dispatch(setMaxValueAC(+value));
-    }
+    }, [dispatch])
 
-    const startValueHandler = (value: string) => {
+    const startValueHandler = useCallback((value: string) => {
         Number.isInteger(+value) && dispatch(setStartValueAC(+value));
-    }
+    }, [dispatch])
 
-    const increaseValue = () => {
+    const increaseValue = useCallback(() => {
         if (increasedValue <= maxValue - 1) {
             const newValue = increasedValue + 1
             dispatch(setIncreasedValueAC(newValue))
         }
-    }
-    const resetValue = () => dispatch(setIncreasedValueAC(startValue))
+    }, [increasedValue, maxValue, dispatch])
+    const resetValue = useCallback(() => dispatch(setIncreasedValueAC(startValue)), [startValue, dispatch])
+
     return (
         <div className="App">
-            <Counter1 valuesOnChangeHandler={valuesOnChangeHandler}
+            {/*            <Counter1 valuesOnChangeHandler={valuesOnChangeHandler}
+                      maxValue={maxValue}
+                      startValue={startValue}
+                      maxValueHandler={maxValueHandler}
+                      startValueHandler={startValueHandler}
+                      increasedValue={increasedValue}
+                      increaseValue={increaseValue}
+                      resetValue={resetValue}
+            />*/}
+
+            <Counter2 valuesOnChangeHandler={valuesOnChangeHandler}
                       maxValue={maxValue}
                       startValue={startValue}
                       maxValueHandler={maxValueHandler}
@@ -46,16 +57,6 @@ function AppWithRedux() {
                       increaseValue={increaseValue}
                       resetValue={resetValue}
             />
-
-            {/*<Counter2 valuesOnChangeHandler={valuesOnChangeHandler}*/}
-            {/*          maxValue={maxValue}*/}
-            {/*          startValue={startValue}*/}
-            {/*          maxValueHandler={maxValueHandler}*/}
-            {/*          startValueHandler={startValueHandler}*/}
-            {/*          increasedValue={increasedValue}*/}
-            {/*          increaseValue={increaseValue}*/}
-            {/*          resetValue={resetValue}*/}
-            {/*/>*/}
         </div>
     );
 }

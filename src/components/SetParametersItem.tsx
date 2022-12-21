@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {memo, useCallback, useState} from "react"
 import s from './SetParametersItem.module.css'
 import {Button} from "./Button";
 import {ValueSettingWindow} from "./ValueSettingWindow";
@@ -11,14 +11,14 @@ type SetParametersWindowType = {
     startValueHandler: (value: string) => void
 }
 
-export const SetParametersItem = (props: SetParametersWindowType) => {
+export const SetParametersItem = React.memo((props: SetParametersWindowType) => {
+    console.log("SetParametersItem")
 
-
-    const valuesOnChangeHandler = () => {
+    const valuesOnChangeHandler = useCallback(() => {
         if ((props.startValue <= props.maxValue) && (props.startValue >= 0)) {
             props.valuesOnChangeHandler()
         }
-    }
+    }, [props.startValue, props.maxValue, props.valuesOnChangeHandler])
 
     return (
         <div className={s.setParametersWindow}>
@@ -32,4 +32,4 @@ export const SetParametersItem = (props: SetParametersWindowType) => {
             </div>
         </div>
     );
-}
+})

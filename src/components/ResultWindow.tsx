@@ -6,8 +6,9 @@ type ResultWindowType = {
     maxValue: number
 }
 
-export const ResultWindow = (props: ResultWindowType)=> {
+export const ResultWindow = React.memo((props: ResultWindowType)=> {
+    console.log("ResultWindow")
     return (
         <div className={props.increasedValue === props.maxValue ? `${s.incWindow} ${s.red}` : s.incWindow}>{props.increasedValue}</div>
     )
-}
+})
