@@ -1,21 +1,11 @@
 import {SetParametersItem} from "./components/SetParametersItem";
 import React, {useCallback, useState} from "react";
-import {CounterItem} from "./components/CounterItem";
 import {Counter2Item} from "./components/Counter2Item";
+import {CounterType} from "./Counter1";
 
-type Counter1Type = {
-    valuesOnChangeHandler: () => void
-    maxValue: number
-    startValue: number
-    maxValueHandler: (value: string) => void
-    startValueHandler: (value: string) => void
-    increasedValue: number
-    increaseValue: () => void
-    resetValue: () => void
-}
 
-export const Counter2 = React.memo((props: Counter1Type) => {
-    console.log("Counter2")
+export const Counter2 = React.memo((props: CounterType) => {
+
     const [counterWindowIsOpen, setCounterWindowIsOpen] = useState(false)
 
     const valuesOnChangeHandler = useCallback(() => {
@@ -26,13 +16,11 @@ export const Counter2 = React.memo((props: Counter1Type) => {
     return (
         <>
             {counterWindowIsOpen ?
-                <Counter2Item increasedValue={props.increasedValue} increaseValue={props.increaseValue}
+                <Counter2Item increaseValueHandler={props.increaseValueHandler}
                               resetValue={props.resetValue}
-                              maxValue={props.maxValue} startValue={props.startValue}
                               valuesOnChangeHandler={valuesOnChangeHandler}/>
                 :
-                <SetParametersItem valuesOnChangeHandler={valuesOnChangeHandler} maxValue={props.maxValue}
-                                   startValue={props.startValue}
+                <SetParametersItem valuesOnChangeHandler={valuesOnChangeHandler}
                                    maxValueHandler={props.maxValueHandler}
                                    startValueHandler={props.startValueHandler}/>}
         </>

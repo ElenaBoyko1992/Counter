@@ -28,7 +28,7 @@ function AppWithRedux() {
         Number.isInteger(+value) && dispatch(setStartValueAC(+value));
     }, [dispatch])
 
-    const increaseValue = useCallback(() => {
+    const increaseValueHandler = useCallback(() => {
         if (increasedValue <= maxValue - 1) {
             const newValue = increasedValue + 1
             dispatch(setIncreasedValueAC(newValue))
@@ -38,25 +38,18 @@ function AppWithRedux() {
 
     return (
         <div className="App">
-            {/*            <Counter1 valuesOnChangeHandler={valuesOnChangeHandler}
-                      maxValue={maxValue}
-                      startValue={startValue}
+                        <Counter1 valuesOnChangeHandler={valuesOnChangeHandler}
                       maxValueHandler={maxValueHandler}
                       startValueHandler={startValueHandler}
-                      increasedValue={increasedValue}
-                      increaseValue={increaseValue}
+                      increaseValueHandler={increaseValueHandler}
+                      resetValue={resetValue}/>
+
+{/*            <Counter2 valuesOnChangeHandler={valuesOnChangeHandler}
+                      maxValueHandler={maxValueHandler}
+                      startValueHandler={startValueHandler}
+                      increaseValueHandler={increaseValueHandler}
                       resetValue={resetValue}
             />*/}
-
-            <Counter2 valuesOnChangeHandler={valuesOnChangeHandler}
-                      maxValue={maxValue}
-                      startValue={startValue}
-                      maxValueHandler={maxValueHandler}
-                      startValueHandler={startValueHandler}
-                      increasedValue={increasedValue}
-                      increaseValue={increaseValue}
-                      resetValue={resetValue}
-            />
         </div>
     );
 }

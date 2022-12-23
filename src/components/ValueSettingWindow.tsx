@@ -10,32 +10,30 @@ type ValueSettingWindowType = {
 const ERROR_MESSAGE = 'Enter a correct value!'
 
 export const ValueSettingWindow = React.memo((props: ValueSettingWindowType) => {
-    console.log("ValueSettingWindow")
+
     const [maxValueError, setMaxValueError] = useState(false);
     const [startValueError, setStartValueError] = useState(false);
 
+    const maxValueLessThanZero = props.maxValue < 0
+    const maxValueLessThanStartValue = props.maxValue < props.startValue
+
     useEffect(() => {
-        if (props.maxValue < 0 || props.maxValue < props.startValue) {
+        if (maxValueLessThanZero || maxValueLessThanStartValue) {
             setMaxValueError(true)
+        } else if (props.startValue < 0) {
+            setStartValueError(true)
         } else {
             setMaxValueError(false)
         }
     }, [props.maxValue, props.startValue])
-    useEffect(() => {
-        if (props.startValue < 0) {
-            setStartValueError(true)
-        } else {
-            setStartValueError(false)
-        }
-    }, [props.startValue, props.maxValue])
 
-
-    const ChangeMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
+    const changeMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
         props.maxValueHandler(e.currentTarget.value)
     }
-    const ChangeStartValue = (e: ChangeEvent<HTMLInputElement>) => {
+    const changeStartValue = (e: ChangeEvent<HTMLInputElement>) => {
         props.startValueHandler(e.currentTarget.value);
     }
+
     return (
         <>
             <div className={s.wrapperValueParams}>
@@ -43,7 +41,7 @@ export const ValueSettingWindow = React.memo((props: ValueSettingWindowType) => 
                     <span>max value:</span>
                     <input type={"number"}
                            value={props.maxValue}
-                           onChange={ChangeMaxValue}
+                           onChange={changeMaxValue}
                            className={maxValueError ? `${s.input} ${s.error}` : s.input}
                     />
                     {maxValueError && <span className={s.errorMessage}>{ERROR_MESSAGE}</span>}
@@ -53,7 +51,7 @@ export const ValueSettingWindow = React.memo((props: ValueSettingWindowType) => 
                     <input type={"number"}
                            value={props.startValue}
                            className={startValueError ? `${s.input} ${s.error}` : s.input}
-                           onChange={ChangeStartValue}
+                           onChange={changeStartValue}
                     />
                     {startValueError && <span className={s.errorMessage}>{ERROR_MESSAGE}</span>}
                 </div>

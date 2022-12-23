@@ -6,7 +6,7 @@ import {Counter1} from "./Counter1";
 import {Counter2} from "./Counter2";
 
 function App() {
-    const [startValue, setStartValue] = useState<number>(0)
+    /*const [startValue, setStartValue] = useState<number>(0)
     const [maxValue, setMaxValue] = useState<number>(0)
     const [increasedValue, setIncreasedValue] = useState<number>(0)
 
@@ -77,21 +77,21 @@ function App() {
                       maxValueHandler={maxValueHandler}
                       startValueHandler={startValueHandler}
                       increasedValue={increasedValue}
-                      increaseValue={increaseValue}
+                      increaseValueHandler={increaseValue}
                       resetValue={resetValue}
             />
 
-            {/*<Counter2 valuesOnChangeHandler={valuesOnChangeHandler}*/}
-            {/*          maxValue={maxValue}*/}
-            {/*          startValue={startValue}*/}
-            {/*          maxValueHandler={maxValueHandler}*/}
-            {/*          startValueHandler={startValueHandler}*/}
-            {/*          increasedValue={increasedValue}*/}
-            {/*          increaseValue={increaseValue}*/}
-            {/*          resetValue={resetValue}*/}
-            {/*/>*/}
+            {/!*<Counter2 valuesOnChangeHandler={valuesOnChangeHandler}*!/}
+            {/!*          maxValue={maxValue}*!/}
+            {/!*          startValue={startValue}*!/}
+            {/!*          maxValueHandler={maxValueHandler}*!/}
+            {/!*          startValueHandler={startValueHandler}*!/}
+            {/!*          increasedValue={increasedValue}*!/}
+            {/!*          increaseValue={increaseValue}*!/}
+            {/!*          resetValue={resetValue}*!/}
+            {/!*!/>*!/}
         </div>
-    );
+    );*/
 }
 
 export default App;

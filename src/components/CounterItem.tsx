@@ -2,26 +2,33 @@ import React from "react"
 import s from './CounterItem.module.css'
 import {Button} from "./Button";
 import {ResultWindow} from "./ResultWindow";
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "../state/store";
 
 
 type CounterPropsType = {
-    increasedValue: number
-    increaseValue: () => void
+    increaseValueHandler: () => void
     resetValue: () => void
-    maxValue: number
-    startValue: number
 }
 
 export const CounterItem = React.memo((props: CounterPropsType) => {
-    console.log("CounterItem")
+
+    const startValue = useSelector<AppRootStateType, number>(state => state.counter.startValue)
+    const maxValue = useSelector<AppRootStateType, number>(state => state.counter.maxValue)
+    const increasedValue = useSelector<AppRootStateType, number>(state => state.counter.increasedValue)
+
+    const equalityMaxAndIncreasedValue = increasedValue === maxValue
+    const equalityIncreasedValueAndStartValue = increasedValue === startValue
+    const maxValueLessOrEqualToStartValue = maxValue <= startValue
+
     return (
         <div className={s.counter}>
-            <ResultWindow increasedValue={props.increasedValue} maxValue={props.maxValue}/>
+            <ResultWindow increasedValue={increasedValue} equalityMaxAndIncreasedValue={equalityMaxAndIncreasedValue}/>
             <div className={s.buttons}>
-                <Button onClickHandler={props.increaseValue}
-                        disabled={props.increasedValue === props.maxValue}>inc</Button>
+                <Button onClickHandler={props.increaseValueHandler}
+                        disabled={equalityMaxAndIncreasedValue}>inc</Button>
                 <Button onClickHandler={props.resetValue}
-                        disabled={props.increasedValue === props.startValue || props.maxValue <= props.startValue}>reset</Button>
+                        disabled={equalityIncreasedValueAndStartValue || maxValueLessOrEqualToStartValue}>reset</Button>
             </div>
         </div>
     );
