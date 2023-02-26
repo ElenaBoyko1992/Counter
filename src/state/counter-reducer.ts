@@ -1,14 +1,3 @@
-export type StateType = {
-    startValue: number
-    maxValue: number
-    increasedValue: number
-}
-
-type setIncreasedValueAT = ReturnType<typeof setIncreasedValueAC>
-type setMaxValueAT = ReturnType<typeof setMaxValueAC>
-type setStartValueAT = ReturnType<typeof setStartValueAC>
-
-type ActionsType = setIncreasedValueAT | setMaxValueAT | setStartValueAT
 
 const initialState: StateType = {
     startValue: 0,
@@ -16,7 +5,7 @@ const initialState: StateType = {
     increasedValue: 0
 }
 
-export const counterReducer = (state = initialState, action: ActionsType): StateType => {
+export const counterReducer = (state = initialState, action: CounterActionsType): StateType => {
     switch (action.type) {
         case 'SET-INCREASED-VALUE': {
             return {
@@ -41,6 +30,20 @@ export const counterReducer = (state = initialState, action: ActionsType): State
     }
 }
 
+//AC
 export const setIncreasedValueAC = (value: number) => ({type: 'SET-INCREASED-VALUE', value} as const)
 export const setMaxValueAC = (maxValue: number) => ({type: 'SET-MAX-VALUE', maxValue} as const)
 export const setStartValueAC = (startValue: number) => ({type: 'SET-START-VALUE', startValue} as const)
+
+//types
+export type StateType = {
+    startValue: number
+    maxValue: number
+    increasedValue: number
+}
+
+type setIncreasedValueAT = ReturnType<typeof setIncreasedValueAC>
+type setMaxValueAT = ReturnType<typeof setMaxValueAC>
+type setStartValueAT = ReturnType<typeof setStartValueAC>
+
+export type CounterActionsType = setIncreasedValueAT | setMaxValueAT | setStartValueAT

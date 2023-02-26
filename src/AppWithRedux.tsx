@@ -5,16 +5,16 @@ import {SetParametersItem} from "./components/SetParametersItem";
 import {Counter1} from "./Counter1";
 import {Counter2} from "./Counter2";
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "./state/store";
+import {AppRootStateType, useAppDispatch, useAppSelector} from "./state/store";
 import {setIncreasedValueAC, setMaxValueAC, setStartValueAC, StateType} from "./state/counter-reducer";
 
 function AppWithRedux() {
 
-    const startValue = useSelector<AppRootStateType, number>(state => state.counter.startValue)
-    const maxValue = useSelector<AppRootStateType, number>(state => state.counter.maxValue)
-    const increasedValue = useSelector<AppRootStateType, number>(state => state.counter.increasedValue)
+    const startValue = useAppSelector<number>(state => state.counter.startValue)
+    const maxValue = useAppSelector<number>(state => state.counter.maxValue)
+    const increasedValue = useAppSelector<number>(state => state.counter.increasedValue)
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const valuesOnChangeHandler = useCallback(() => {
         dispatch(setIncreasedValueAC(startValue))
@@ -38,7 +38,7 @@ function AppWithRedux() {
 
     return (
         <div className="App">
-                        <Counter1 valuesOnChangeHandler={valuesOnChangeHandler}
+                                    <Counter1 valuesOnChangeHandler={valuesOnChangeHandler}
                       maxValueHandler={maxValueHandler}
                       startValueHandler={startValueHandler}
                       increaseValueHandler={increaseValueHandler}
